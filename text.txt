@@ -1,18 +1,8 @@
-helloWorld Hellow Openclassrooms.
- I am very happy.
-Hellow Openclassrooms.
- I am very happy.
-Hellow Openclassrooms.
- I am very happy.
-Hellow Openclassrooms.
- I am very happy.
-Hellow Openclassrooms.
- I am very happy.
-Hellow Openclassrooms.
- I am very happy.
-Hellow Openclassrooms.
- I am very happy.
-Hellow Openclassrooms.
- I am very happy.
-Hellow Openclassrooms.
- I am very happy.
+
+Hello World.
+Hello World.
+Hello World.
+Hello World.
+Hello World.
+Hello World.
+Hello World.

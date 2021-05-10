@@ -3,28 +3,33 @@ package com.hemebiotech.analytics;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.TreeMap;
-
+/**
+ * 
+ * @author adil_
+ *
+ */
 public class AnalyticsCounter {
 
-	
+	/**
+	 * 
+	 * 
+	 * @param fileName
+	 * @param words
+	 * @throws FileNotFoundException
+	 */
 	// create function to count words
 	public void countEachWord(String fileName, Map<String, Integer> words) throws FileNotFoundException {
-
-		// Create file input and Scanner
 		
-		Scanner file = new Scanner(new File(fileName));
-
-		// Read through file and find words
-		while (file.hasNext()) {
-			String word = file.next();
+		// Read Files
+		   ReadFile reader = new ReadFile();
+		List<String>symptoms = reader.readFile("symptoms.txt");
+		for(String symptom : symptoms)
+		{
+			String word = symptom;
 			Integer count = words.get(word);
 
 			// Determine if the word is in the Map
@@ -37,17 +42,31 @@ public class AnalyticsCounter {
 			// putting values in the Map
 			words.put(word, count);
 		}
+		// Create file input and Scanner
+		
+		//Scanner file = new Scanner(new File(fileName));
+
+		// Read through file and find words
+		//while (file.hasNext()) {
+			
+		//}
 
 		// Close
-		file.close();
+		//file.close();
 
 	}
 
+	/**
+	 * 
+	 * @param args
+	 * @throws FileNotFoundException
+	 */
 	public static void main(String args[]) throws FileNotFoundException {
 
 		Map<String, Integer> words = new HashMap<String, Integer>();
 
-		// Calling the function countEachWord	
+		// Calling the function countEachWord
+		
           AnalyticsCounter counter = new AnalyticsCounter();
           counter.countEachWord("symptoms.txt", words);
 		// Create a TreeMap
@@ -56,28 +75,24 @@ public class AnalyticsCounter {
 		// sorting the map
 		sortedWords.entrySet().forEach(System.out::println);
 		
-		
-		
-
+	
 		// Write in the java File
+		WriteInTheFile wr = new WriteInTheFile();
+				
+			File f = new File("text.txt");
+			try {
+				wr.write("Hello World.\n",f);
+			}
+	         catch(IOException e) {
+	        	 
+	         }
+		
+	
+		
 		
         //Determine the path
-		Path path = Paths.get("text.txt");
-		String texte = "Hellow Openclassrooms.\n I am very happy.\n";
 		
 		
-		try {
-			Files.write(path, texte.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE,
-					StandardOpenOption.APPEND);
-
-		} catch (IOException e) {
-			System.out.println("File does not exist");
-			// e.printStackTrace();
-		}
-
-		// Read Files
-		   ReadFile reader = new ReadFile();
-		reader.readFile("symptoms.txt");
 
 		
 	}
