@@ -21,34 +21,37 @@ public class ReadFile {
 	 * 
 	 * @param fileName
 	 * @return
-	 * @throws FileNotFoundException
+	 * 
 	 */
 	public List<String> readFile(String fileName)  {
 
 		// Create file input and Scanner
 		File file = new File(fileName);
-		
+		List<String> symptomsList = new ArrayList<String>();
 		Scanner in = null;
 		try {
 			in = new Scanner(file);
+			
+
+			// Read through file and find lines
+			while (in.hasNextLine()) {
+				String line = in.nextLine();
+				System.out.println(line);
+				symptomsList.add(line);
+			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			in.close();
 		}
 		
 	
-		List<String> symptomsList = new ArrayList<String>();
-
-		// Read through file and find lines
-		while (in.hasNextLine()) {
-			String line = in.nextLine();
-			System.out.println(line);
-			symptomsList.add(line);
-		}
+		
 	
 		// Close
 		
-		in.close();
+	
 		
 		return symptomsList;
 		
