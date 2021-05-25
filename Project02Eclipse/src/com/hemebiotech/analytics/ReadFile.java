@@ -23,12 +23,20 @@ public class ReadFile {
 	 * @return
 	 * @throws FileNotFoundException
 	 */
-	public List<String> readFile(String fileName) throws FileNotFoundException {
+	public List<String> readFile(String fileName)  {
 
 		// Create file input and Scanner
 		File file = new File(fileName);
-
-		Scanner in = new Scanner(file);
+		
+		Scanner in = null;
+		try {
+			in = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
 		List<String> symptomsList = new ArrayList<String>();
 
 		// Read through file and find lines
@@ -37,9 +45,13 @@ public class ReadFile {
 			System.out.println(line);
 			symptomsList.add(line);
 		}
+	
 		// Close
+		
 		in.close();
+		
 		return symptomsList;
-	}
-
+		
+		}
 }
+

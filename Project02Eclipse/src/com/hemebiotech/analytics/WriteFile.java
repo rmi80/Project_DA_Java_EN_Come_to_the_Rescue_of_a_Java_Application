@@ -6,9 +6,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Map.Entry;
-
+/**
+ * 
+ * @author adil_
+ *
+ */
 public class WriteFile {
-
+/**
+ * 
+ * 
+ * @param symptomMap
+ */
 	public void writeFile(Map<String, Integer> symptomMap) {
 
 		File file = new File("result.out");
